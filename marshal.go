@@ -635,14 +635,14 @@ func marshalVarbind(pdu *SnmpPDU) ([]byte, error) {
 		// Number
 		var intBytes []byte
 		switch value := pdu.Value.(type) {
-		case uint32:
+		case uint32, uint:
 			intBytes, err = marshalUint32(value)
 			pdu.Check(err)
 		case uint:
 			intBytes, err = marshalUint32(uint32(value))
 			pdu.Check(err)
 		default:
-			return nil, fmt.Errorf("unable to marshal pdu.Type %v; unknown pdu.Value %v[type=%v]", pdu.Type, pdu.Value, reflect.TypeOf(pdu.Value))
+			return nil, fmt.Errorf("Unable to marshal pdu.Type %v; unknown pdu.Value %T(%v)", pdu.Type, pdu.Value, pdu.Value)
 		}
 		tmpBuf.Write([]byte{byte(pdu.Type), byte(len(intBytes))})
 		tmpBuf.Write(intBytes)

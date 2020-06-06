@@ -187,6 +187,26 @@ func (t *TrapListener) listenUDP(addr string) error {
 			if traps != nil {
 				t.OnNewTrap(traps, remote)
 			}
+			if traps.PDUType == InformRequest {
+				traps.PDUType = GetResponse
+				log.Printf("sending INFORM response: %+v\n", traps)
+
+				ob, err := traps.marshalMsg()
+				if err != nil {
+					return fmt.Errorf("Error marshaling INFORM response: %v\n", err)
+				}
+
+				// Send the return packet back.
+				count, err := conn.WriteTo(ob, remote)
+				if err != nil {
+					return fmt.Errorf("Error sending INFORM response: %v\n", err)
+				}
+
+				// This isn't fatal, but should be logged.
+				if count != len(ob) {
+					log.Printf("Failed to send all bytes of INFORM response!\n")
+				}
+			}
 		}
 	}
 }
