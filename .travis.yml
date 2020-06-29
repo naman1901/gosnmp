@@ -36,3 +36,4 @@ script:
  - go test -v -tags api
  - go test -v -tags end2end
  - go test -v -tags trap
+ - go test -v -tags all -race
