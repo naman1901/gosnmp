@@ -344,8 +344,9 @@ func TestSnmpV3NoAuthNoPrivBasicGet(t *testing.T) {
 	if result.Variables[0].Type != OctetString {
 		t.Fatalf("Expected sysDescr to be OctetString")
 	}
-	sysDescr := result.Variables[0].Value.([]byte)
-	if len(sysDescr) == 0 {
+	if sysDescr, ok := result.Variables[0].Value.(string); !ok {
+		t.Fatalf("Couldn't assert Value to string (is %T)", result.Variables[0].Value)
+	} else if len(sysDescr) == 0 {
 		t.Fatalf("Got a zero length sysDescr")
 	}
 }
@@ -368,8 +369,9 @@ func TestSnmpV3AuthMD5NoPrivGet(t *testing.T) {
 	if result.Variables[0].Type != OctetString {
 		t.Fatalf("Expected sysDescr to be OctetString")
 	}
-	sysDescr := result.Variables[0].Value.([]byte)
-	if len(sysDescr) == 0 {
+	if sysDescr, ok := result.Variables[0].Value.(string); !ok {
+		t.Fatalf("Couldn't assert Value to string (is %T)", result.Variables[0].Value)
+	} else if len(sysDescr) == 0 {
 		t.Fatalf("Got a zero length sysDescr")
 	}
 }
@@ -396,8 +398,9 @@ func TestSnmpV3AuthMD5PrivAES256CGet(t *testing.T) {
 	if result.Variables[0].Type != OctetString {
 		t.Fatalf("Expected sysDescr to be OctetString")
 	}
-	sysDescr := result.Variables[0].Value.([]byte)
-	if len(sysDescr) == 0 {
+	if sysDescr, ok := result.Variables[0].Value.(string); !ok {
+		t.Fatalf("Couldn't assert Value to string (is %T)", result.Variables[0].Value)
+	} else if len(sysDescr) == 0 {
 		t.Fatalf("Got a zero length sysDescr")
 	}
 }
@@ -420,8 +423,9 @@ func TestSnmpV3AuthSHANoPrivGet(t *testing.T) {
 	if result.Variables[0].Type != OctetString {
 		t.Fatalf("Expected sysDescr to be OctetString")
 	}
-	sysDescr := result.Variables[0].Value.([]byte)
-	if len(sysDescr) == 0 {
+	if sysDescr, ok := result.Variables[0].Value.(string); !ok {
+		t.Fatalf("Couldn't assert Value to string (is %T)", result.Variables[0].Value)
+	} else if len(sysDescr) == 0 {
 		t.Fatalf("Got a zero length sysDescr")
 	}
 }
@@ -448,8 +452,9 @@ func TestSnmpV3AuthSHAPrivAESGet(t *testing.T) {
 	if result.Variables[0].Type != OctetString {
 		t.Fatalf("Expected sysDescr to be OctetString")
 	}
-	sysDescr := result.Variables[0].Value.([]byte)
-	if len(sysDescr) == 0 {
+	if sysDescr, ok := result.Variables[0].Value.(string); !ok {
+		t.Fatalf("Couldn't assert Value to string (is %T)", result.Variables[0].Value)
+	} else if len(sysDescr) == 0 {
 		t.Fatalf("Got a zero length sysDescr")
 	}
 }
@@ -476,8 +481,9 @@ func TestSnmpV3AuthSHAPrivAES256CGet(t *testing.T) {
 	if result.Variables[0].Type != OctetString {
 		t.Fatalf("Expected sysDescr to be OctetString")
 	}
-	sysDescr := result.Variables[0].Value.([]byte)
-	if len(sysDescr) == 0 {
+	if sysDescr, ok := result.Variables[0].Value.(string); !ok {
+		t.Fatalf("Couldn't assert Value to string (is %T)", result.Variables[0].Value)
+	} else if len(sysDescr) == 0 {
 		t.Fatalf("Got a zero length sysDescr")
 	}
 }
@@ -503,8 +509,9 @@ func TestSnmpV3AuthSHA224NoPrivGet(t *testing.T) {
 	if result.Variables[0].Type != OctetString {
 		t.Fatalf("Expected sysDescr to be OctetString")
 	}
-	sysDescr := result.Variables[0].Value.([]byte)
-	if len(sysDescr) == 0 {
+	if sysDescr, ok := result.Variables[0].Value.(string); !ok {
+		t.Fatalf("Couldn't assert Value to string (is %T)", result.Variables[0].Value)
+	} else if len(sysDescr) == 0 {
 		t.Fatalf("Got a zero length sysDescr")
 	}
 }
@@ -530,8 +537,9 @@ func TestSnmpV3AuthSHA256NoPrivGet(t *testing.T) {
 	if result.Variables[0].Type != OctetString {
 		t.Fatalf("Expected sysDescr to be OctetString")
 	}
-	sysDescr := result.Variables[0].Value.([]byte)
-	if len(sysDescr) == 0 {
+	if sysDescr, ok := result.Variables[0].Value.(string); !ok {
+		t.Fatalf("Couldn't assert Value to string (is %T)", result.Variables[0].Value)
+	} else if len(sysDescr) == 0 {
 		t.Fatalf("Got a zero length sysDescr")
 	}
 }
@@ -557,8 +565,9 @@ func TestSnmpV3AuthSHA384NoPrivGet(t *testing.T) {
 	if result.Variables[0].Type != OctetString {
 		t.Fatalf("Expected sysDescr to be OctetString")
 	}
-	sysDescr := result.Variables[0].Value.([]byte)
-	if len(sysDescr) == 0 {
+	if sysDescr, ok := result.Variables[0].Value.(string); !ok {
+		t.Fatalf("Couldn't assert Value to string (is %T)", result.Variables[0].Value)
+	} else if len(sysDescr) == 0 {
 		t.Fatalf("Got a zero length sysDescr")
 	}
 }
@@ -584,8 +593,9 @@ func TestSnmpV3AuthSHA512NoPrivGet(t *testing.T) {
 	if result.Variables[0].Type != OctetString {
 		t.Fatalf("Expected sysDescr to be OctetString")
 	}
-	sysDescr := result.Variables[0].Value.([]byte)
-	if len(sysDescr) == 0 {
+	if sysDescr, ok := result.Variables[0].Value.(string); !ok {
+		t.Fatalf("Couldn't assert Value to string (is %T)", result.Variables[0].Value)
+	} else if len(sysDescr) == 0 {
 		t.Fatalf("Got a zero length sysDescr")
 	}
 }
@@ -614,8 +624,9 @@ func TestSnmpV3AuthSHA512PrivAES192Get(t *testing.T) {
 	if result.Variables[0].Type != OctetString {
 		t.Fatalf("Expected sysDescr to be OctetString")
 	}
-	sysDescr := result.Variables[0].Value.([]byte)
-	if len(sysDescr) == 0 {
+	if sysDescr, ok := result.Variables[0].Value.(string); !ok {
+		t.Fatalf("Couldn't assert Value to string (is %T)", result.Variables[0].Value)
+	} else if len(sysDescr) == 0 {
 		t.Fatalf("Got a zero length sysDescr")
 	}
 }
@@ -646,8 +657,9 @@ func TestSnmpV3AuthSHA512PrivAES192CGet(t *testing.T) {
 	if result.Variables[0].Type != OctetString {
 		t.Fatalf("Expected sysDescr to be OctetString")
 	}
-	sysDescr := result.Variables[0].Value.([]byte)
-	if len(sysDescr) == 0 {
+	if sysDescr, ok := result.Variables[0].Value.(string); !ok {
+		t.Fatalf("Couldn't assert Value to string (is %T)", result.Variables[0].Value)
+	} else if len(sysDescr) == 0 {
 		t.Fatalf("Got a zero length sysDescr")
 	}
 }
@@ -678,8 +690,9 @@ func TestSnmpV3AuthSHA512PrivAES256CGet(t *testing.T) {
 	if result.Variables[0].Type != OctetString {
 		t.Fatalf("Expected sysDescr to be OctetString")
 	}
-	sysDescr := result.Variables[0].Value.([]byte)
-	if len(sysDescr) == 0 {
+	if sysDescr, ok := result.Variables[0].Value.(string); !ok {
+		t.Fatalf("Couldn't assert Value to string (is %T)", result.Variables[0].Value)
+	} else if len(sysDescr) == 0 {
 		t.Fatalf("Got a zero length sysDescr")
 	}
 }
@@ -708,8 +721,9 @@ func TestSnmpV3AuthMD5PrivDESGet(t *testing.T) {
 	if result.Variables[0].Type != OctetString {
 		t.Fatalf("Expected sysDescr to be OctetString")
 	}
-	sysDescr := result.Variables[0].Value.([]byte)
-	if len(sysDescr) == 0 {
+	if sysDescr, ok := result.Variables[0].Value.(string); !ok {
+		t.Fatalf("Couldn't assert Value to string (is %T)", result.Variables[0].Value)
+	} else if len(sysDescr) == 0 {
 		t.Fatalf("Got a zero length sysDescr")
 	}
 }
@@ -737,8 +751,9 @@ func TestSnmpV3AuthSHAPrivDESGet(t *testing.T) {
 	if result.Variables[0].Type != OctetString {
 		t.Fatalf("Expected sysDescr to be OctetString")
 	}
-	sysDescr := result.Variables[0].Value.([]byte)
-	if len(sysDescr) == 0 {
+	if sysDescr, ok := result.Variables[0].Value.(string); !ok {
+		t.Fatalf("Couldn't assert Value to string (is %T)", result.Variables[0].Value)
+	} else if len(sysDescr) == 0 {
 		t.Fatalf("Got a zero length sysDescr")
 	}
 }
@@ -767,8 +782,9 @@ func TestSnmpV3AuthMD5PrivAESGet(t *testing.T) {
 	if result.Variables[0].Type != OctetString {
 		t.Fatalf("Expected sysDescr to be OctetString")
 	}
-	sysDescr := result.Variables[0].Value.([]byte)
-	if len(sysDescr) == 0 {
+	if sysDescr, ok := result.Variables[0].Value.(string); !ok {
+		t.Fatalf("Couldn't assert Value to string (is %T)", result.Variables[0].Value)
+	} else if len(sysDescr) == 0 {
 		t.Fatalf("Got a zero length sysDescr")
 	}
 }
