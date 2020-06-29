@@ -486,7 +486,6 @@ func marshalOID(oid string) ([]byte, error) {
 }
 
 func oidToString(oid []int) (ret string) {
-	
 	// used for appending of the first dot
 	var oidAsString strings.Builder
 	oidAsString.WriteString(".")
@@ -495,7 +494,6 @@ func oidToString(oid []int) (ret string) {
 		oidAsString.WriteString(a)
 		oidAsString.WriteString(".")
 	}
-
 	return oidAsString.String()
 }
 
