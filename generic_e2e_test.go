@@ -124,8 +124,9 @@ func TestGenericBasicGet(t *testing.T) {
 	if result.Variables[0].Type != OctetString {
 		t.Fatalf("Expected sysDescr to be OctetString")
 	}
-	sysDescr := result.Variables[0].Value.([]byte)
-	if len(sysDescr) == 0 {
+	if sysDescr, ok := result.Variables[0].Value.(string); !ok {
+		t.Fatalf("Couldn't assert Value to string (is %T)", result.Variables[0].Value)
+	} else if len(sysDescr) == 0 {
 		t.Fatalf("Got a zero length sysDescr")
 	}
 }
